@@ -1,48 +1,34 @@
 
-// Cre by ManhNTzz
+// Cre by ManhNtzz
 
 import java.util.Scanner;
-
-// Hàm trả về các kí tự sau khi cắt đôi, nếu không thỏa mãn trả về -1
-// Duyệt xâu để lấy ra số tạo bởi xâu
-// Kiểm số thỏa mãn nếu = 0 thì không in ra
-
 public class Main {
 
-    public static int catDoi(char c) {
-        if (c == '0' || c == '9' || c == '8') {
-            return 0;
+    private static String catDoi(String s) {
+        String res = "";
+        for (char c : s.toCharArray()) {
+            if (c == '8' || c == '9' || c == '0') {
+                // Xử lý trường hợp số 0 đầu tiên
+                if (res.length() > 0) {
+                    res += "0";
+                }
+            } else if (c == '1') {
+                res += "1";
+            } else {
+                return "INVALID";
+            }
         }
-        if (c == '1') {
-            return 1;
-        }
-        return -1;
+        return res.length() == 0 ? "INVALID" : res;
     }
 
     public static void main(String[] args) {
+
         Scanner sc = new Scanner(System.in);
         int t = sc.nextInt();
         sc.nextLine();
         while (t-- > 0) {
             String s = sc.next();
-            char[] a = s.toCharArray();
-            int ok = 1;
-            long res = 0;
-            for (int i = 0; i < s.length(); i++) {
-                int x = catDoi(a[i]);
-                if (x == -1) {
-                    ok = 0;
-                    System.out.println("INVALID");
-                    break;
-                }
-                res = res * 10 + x;
-            }
-            if (res == 0) {
-                if (ok == 1) {
-                    System.out.println("INVALID");
-                }
-            } else
-                System.out.println(res);
+            System.out.println(catDoi(s));
         }
         sc.close();
     }
