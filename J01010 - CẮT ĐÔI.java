@@ -20,7 +20,6 @@ public class Main {
         }
         return res.length() == 0 ? "INVALID" : res;
     }
-
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
