@@ -1,49 +1,55 @@
 
 // Cre by ManhNTzz
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
-    // Mảng dp[] được dùng để lưu ước số nguyên tố nhỏ nhất của i
-    // Dùng sàng để tính
-    static long[] dp = new long[2000005];
-
-    public static void sangUoc() {
-        for (int i = 0; i <= 2000000; i++) {
-            dp[i] = i;
-        }
-        dp[0] = 0;
-        dp[1] = 1;
-        for (int i = 2; i <= Math.sqrt(2000000); i++) {
-            if (dp[i] == i) {
-                // dp[i] = i nghĩa là i là số nguyên tố, duyệt qua các bội số của i
-                for (int j = i * i; j <= 2000000; j += i) {
-                    dp[j] = i;
+    private static final int MAX = 2000001;
+    
+    // Tạo List lưu các thừa số nguyên tố
+    private static ArrayList<Integer> primes;
+    
+    // Sàng số nguyên tố
+    private static void Sang(){
+        primes = new ArrayList<>();
+        boolean [] isPrime = new boolean[MAX];
+        // Số nguyên tố đại diện cho true
+        Arrays.fill(isPrime, true);
+        isPrime[0] = isPrime[1] = false;
+        for(int i = 2; i <= Math.sqrt(MAX); i++){
+            if(isPrime[i]){
+                for (int j = i * i; j < MAX;j += i){
+                    isPrime[j] = false;
                 }
             }
         }
-    }
-
-    // Hàm tính tổng các ước số nguyên tố của 1 số
-    public static long solve(int n) {
-        long sum = 0;
-        while (n > 1) {
-            sum += dp[n];
-            n /= dp[n];
+        for(int i = 2; i < MAX; i++){
+            if(isPrime[i]){
+                primes.add(i);
+            }
         }
-        return sum;
     }
-
     public static void main(String[] args) {
+        Sang();
         Scanner sc = new Scanner(System.in);
-        sangUoc();
         int t = sc.nextInt();
         long sum = 0;
-        // Cho t-- vào trong while thì mới có thể AC :v
-        while (t > 0) {
-            t--;
+        while(t-- > 0) {
             int n = sc.nextInt();
-            sum += solve(n);
+            for(Integer x:primes){
+                if(x * x > n){
+                    break;
+                }
+                while(n % x == 0){
+                    sum += x;
+                    n /= x;
+                }
+            }
+            if (n > 1){
+                sum += n;
+            }
         }
         System.out.println(sum);
         sc.close();
