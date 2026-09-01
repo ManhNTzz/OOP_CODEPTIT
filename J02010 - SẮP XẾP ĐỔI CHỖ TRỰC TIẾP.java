@@ -1,0 +1,36 @@
+// Đổi chỗ trực tiếp
+// Duyệt hai vòng for i từ 0 -> n - 1 và j từ i + 1 -> n
+// Nếu a[i] > a[j] thì đổi chỗ a[i] với a[j]
+// In ra bước ở vòng for của i
+
+// Cre by ManhNTzz
+
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int[] a = new int[n];
+        for (int i = 0; i < n; i++) {
+            a[i] = sc.nextInt();
+        }
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = i + 1; j < n; j++) {
+                if (a[i] > a[j]) {
+                    int tmp = a[i];
+                    a[i] = a[j];
+                    a[j] = tmp;
+                }
+            }
+            System.out.print("Buoc " + (i + 1) + ": ");
+            for (int j = 0; j < n; j++) {
+                System.out.print(a[j] + " ");
+            }
+            System.out.println();
+        }
+        sc.close();
+    }
+}
