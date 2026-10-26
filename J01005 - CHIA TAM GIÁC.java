@@ -2,7 +2,7 @@
 // Cre by ManhNTzz
 
 import java.util.Scanner;
-
+ 
 // Giả sử ban đầu tam giác có diện tích s và chiều cao h
 // Công thức toán học
 // Giả sử lát cắt 1 <= i <= n - 1 tính từ đỉnh sẽ tạo ra tam giác nhỏ đồng dạng
