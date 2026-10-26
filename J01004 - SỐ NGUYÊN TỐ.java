@@ -2,7 +2,7 @@
 // Cre by ManhNTzz
 
 import java.util.Scanner;
-
+ 
 public class Main {
     private static boolean IsPrime(int n) {
         if (n < 2)
