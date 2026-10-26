@@ -23,7 +23,6 @@ public class Main {
 
 
 
-
 // Cách thông thường
 // public class Main {
 //     // Đệ quy tìm ucln
