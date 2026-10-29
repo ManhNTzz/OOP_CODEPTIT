@@ -3,7 +3,7 @@
 // Đệ quy tính giai thừa
 
 import java.util.Scanner;
-
+ 
 public class Main {
     private static long giaiThua(long n) {
         if (n == 0 || n == 1)
